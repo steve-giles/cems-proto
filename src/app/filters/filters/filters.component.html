@@ -1,0 +1,44 @@
+<form [formGroup]="filterForm">
+  <div *ngIf="filters$ | async as filters; else loading">
+    <p>{{ filters.length }} Filter sets for company 51</p>
+    <select formControlName="selectedFilter">
+      <option *ngFor="let filter of filters" [value]="filter.id">
+        {{ filter.name }}
+      </option>
+    </select>
+
+    <div *ngIf="filterForm.get('selectedFilter').value != ''">
+      <table>
+        <tr>
+          <th>Id</th>
+          <td>{{filterDetails?.id}}</td>
+        </tr>
+        <tr>
+          <th>Company Id</th>
+          <td>{{filterDetails?.companyId}}</td>
+        </tr>
+        <tr>
+          <th>Description</th>
+          <td>{{filterDetails?.description}}</td>
+        </tr>
+        <tr>
+          <th>Viewable by Corp Admin</th>
+          <td>{{filterDetails?.isViewableByCorpAdmin}}</td>
+        </tr>
+        <tr>
+          <th>Editable by Corp Admin</th>
+          <td>{{filterDetails?.isEditableByCorpAdmin}}</td>
+        </tr>
+      </table>
+    </div>
+
+  </div>
+  <ng-template #loading>
+    <svg class="circular">
+      <circle class="path" cx="50" cy="50" r="20" fill="none" stroke-width="3" stroke-miterlimit="10" />
+    </svg>
+  </ng-template>
+</form>
+<br>
+
+
