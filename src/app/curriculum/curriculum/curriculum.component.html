@@ -1,0 +1,51 @@
+<form [formGroup]="curriculumForm">
+  <div *ngIf="curriculums$ | async as curriculums; else loading">
+    <p>{{ curriculums.length }} Curriculums for company 51</p>
+    <select formControlName="selectedCurriculum">
+      <option *ngFor="let curriculum of curriculums" [value]="curriculum.id">
+        {{ curriculum.name }}
+      </option>
+    </select>
+
+    <div *ngIf="curriculumForm.get('selectedCurriculum').value != ''">
+      <table>
+        <tr>
+          <th>Id</th>
+          <td>{{curriculumDetails?.id}}</td>
+        </tr>
+        <tr>
+          <th>Company Id</th>
+          <td>{{curriculumDetails?.companyId}}</td>
+        </tr>
+        <tr>
+          <th>Description</th>
+          <td>{{curriculumDetails?.description}}</td>
+        </tr>
+        <tr>
+          <th>Send course reminder</th>
+          <td>{{curriculumDetails?.sendCourseReminder}}</td>
+        </tr>
+        <tr>
+          <th>Course</th>
+          <td>
+            <select formControlName="selectedCourse">
+              <option *ngFor="let course of curriculumDetails?.courses" [value]="course">
+                {{ course.name }}
+              </option>
+            </select>
+          </td>
+        </tr>
+      </table>
+    </div>
+
+  </div>
+  <ng-template #loading>
+    <svg class="circular">
+      <circle class="path" cx="50" cy="50" r="20" fill="none" stroke-width="3" stroke-miterlimit="10" />
+    </svg>
+  </ng-template>
+</form>
+<br>
+
+
+
