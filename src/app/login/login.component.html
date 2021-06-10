@@ -1,3 +1,9 @@
+<div *ngIf="loading">
+  <svg class="circular">
+    <circle class="path" cx="50" cy="50" r="20" fill="none" stroke-width="3" stroke-miterlimit="10" />
+  </svg>
+</div>
+
 <mat-card>
   <mat-card-content>
     <form [formGroup]="form" (ngSubmit)="onSubmit()">
@@ -21,3 +27,4 @@
     </form>
   </mat-card-content>
 </mat-card>
+

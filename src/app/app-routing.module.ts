@@ -19,6 +19,11 @@ const routes: Routes = [
   },
   {
     path: 'login',
+    redirectTo: 'login/',
+    pathMatch: 'full'
+  },
+  {
+    path: 'login/:token',
     component: LoginComponent
   },
   {

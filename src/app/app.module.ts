@@ -24,7 +24,6 @@ import {MaterialModule} from './shared/material.module';
     MaterialModule,
     BrowserModule,
     NgbModule,
-    AppRoutingModule,
     HttpClientModule,
     FiltersModule,
     CurriculumModule,
